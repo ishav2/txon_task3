@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List App</title>
+    <style>
+      /* CSS styles go here */
+      body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      #add-task {
+        width: 100%;
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      #add-button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 14px 20px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      #add-button:hover {
+        background-color: #2980b9;
+      }
+
+      .task {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .task p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .task button {
+        float: right;
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .task button:hover {
+        background-color: #c0392b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do List</h1>
+      <input type="text" id="add-task" placeholder="Add a new task...">
+      <button id="add-button" onclick="addTask()">Add</button>
+      <div id="task-list"></div>
+    </div>
+
+    <script>
+      function addTask() {
+        // Get the task input value
+        var task = document.getElementById("add-task").value;
+
+        // Create a new task element
+        var newTask = document.createElement("div");
+        newTask.classList.add("task");
+        newTask.innerHTML = "<p>" + task + "</p>" + "<button onclick='removeTask(this)'>X</button>";
+
+        // Append the new task element to the task list
+        document.getElementById("task-list").appendChild(newTask);
+
+        // Clear the task input
+        document.getElementById("add-task").value = "";
+      }
+
+      function removeTask(element) {
